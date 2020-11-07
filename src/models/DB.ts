@@ -86,11 +86,11 @@ export class DB {
 		params.selected.forEach((a) => {
 			const query = arrIncludes(a.toLowerCase(), types);
 			if (query) {
-				dishes1.push(
-					...DataBase.dishes.filter((a) =>
-						a.type?.trim() ? a.type.toLocaleLowerCase().includes(String(query)) : true
-					)
-				);
+				// dishes1.push(
+				// 	...DataBase.dishes.filter((a) =>
+				// 		a.type?.trim() ? a.type.toLocaleLowerCase().includes(String(query)) : true
+				// 	)
+				// );
 			}
 		});
 
