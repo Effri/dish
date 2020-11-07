@@ -7,7 +7,6 @@ interface IParams {
 }
 
 router.get("/", (req, res) => {
-	console.log(req.query.id);
 	res.status(200);
 	const id = req.query.id as string;
 	const last = (req.query.last as string) || false;

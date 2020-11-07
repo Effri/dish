@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		startLoad();
-		console.log("START");
 		let generated = await axios.post("/api/generate", { slider, switches, selected }).then(
 			(res) => {
 				if (!String(res.status).startsWith("2")) {
@@ -75,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 		main.append(rowResults);
 		main.append(rowLogo);
-		console.log("END");
 		const save = document.getElementById("save");
 		const restart = document.getElementById("restart");
 		endLoad();

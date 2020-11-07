@@ -4,10 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (!dishCollections) return;
 
 	dishCollections.addEventListener("click", (event) => {
-		console.log("CLICK1");
 		const target = event.target.closest(".list-time__edit");
 		if (!target) return; //? Check target
-		console.log("CLICK2");
 		const id = target.getAttribute("data-id"),
 			name = document.getElementById("edit_name"),
 			link = document.getElementById("edit_link"),
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 					edit.setAttribute("data-edit", id);
 					editLogo.textContent = `Изменение блюда ${dish.name}!`;
-					console.log("SCROLL");
 					scrollUp();
 				} else {
 					M.toast({

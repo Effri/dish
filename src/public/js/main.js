@@ -22,12 +22,10 @@ function scrollUp() {
 
 function setList(list) {
 	const dishes = list.dishes;
-	console.log(dishes);
 	const listEl = document.querySelector(".last-time__list");
 	listEl.querySelectorAll(".collection-item").forEach((a) => a.remove());
 	if (listEl.querySelector(".list__empty")) listEl.querySelector(".list__empty").remove();
 
-	console.log(listEl);
 	dishes.forEach((el, i) => {
 		const li = document.createElement("li");
 		li.className = "collection-item";
