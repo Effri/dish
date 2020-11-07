@@ -108,13 +108,13 @@ export class DB {
 		params.switches.forEach((a) => {
 			const query = arrIncludes(a.toLowerCase(), dishTypes) as string;
 			if (query) {
-				dishes2.push(
-					...DataBase.dishes.filter((a) =>
-						a.dishType?.trim()
-							? a.dishType.toLocaleLowerCase().includes(switchesEncode[query] || "")
-							: true
-					)
-				);
+				// dishes2.push(
+				// 	...DataBase.dishes.filter((a) =>
+				// 		a.dishType?.trim()
+				// 			? a.dishType.toLocaleLowerCase().includes(switchesEncode[query] || "")
+				// 			: true
+				// 	)
+				// );
 			}
 		});
 		if (params.switches.includes("1")) {
