@@ -1,0 +1,54 @@
+include modules/head
+body
+  include modules/nav
+  include modules/preload
+  main.edit
+    .row
+      .col.s10.offset-s1
+        h1.edit__logo.center-align Добавьте новое блюдо в список!
+    .row.center-align
+      .col.s10.offset-s1
+        .input-field
+          input#edit_name.validate(placeholder="Введите название блюда" type="text")
+          label(for="edit_name") Название
+    .row.center-align
+      .col.s10.m5.offset-s1.offset-m1.center-align
+        .input-field
+          input#edit_link.validate(placeholder="Ссылка на рецепт" type="text")
+          label(for="edit_link") Рецепт
+      .col.s10.m5.offset-s1
+        .input-field
+          input#edit_dishType.validate(placeholder="Второе, Первое, Десерт" type="text")
+          label(for="edit_dishType") Тип блюда   
+    .row
+      .col.s10.offset-s1
+        .input-field
+          input#edit__type.validate(placeholder="Обед, Полдник, Завтрак, Ужин" type="text")
+          label(for="edit__type") Тип трапезы  (чезер запятую если несколько)
+    .row
+      .col.s10.offset-s1
+        .input-field
+          textarea#edit_area.materialize-textarea(placeholder="Введите описание блюда")
+          label(for="edit_area") Описание
+    .row
+      .col.s10.offset-s1
+        button.edit__submit.purple.darken-1.btn.waves-effect.waves-light Создать блюдо <i class="material-icons right">send</i>
+  section.list
+    h1.list__logo.center-align
+    .row
+      ul.last-time__list.list-time__collection.collection.with-header.col.s10.offset-s1
+        li.collection-header <h4>Список всех блюд:</h4>
+        if dishes[0]
+          each el, i in dishes
+            li.collection-item
+              div.collection-item__insert <span class="list__title">#{el.name}</span>
+                a.list-time__icon.tooltipped.secondary-content(href=`/view?id=${el.id}` data-tooltip="Узнать подробнее") <i class="material-icons">send</i>
+                a.list-time__edit.list-time__icon.tooltipped.secondary-content(href=`#!` data-id=`${el.id}` data-tooltip="Редактировать") <i class="material-icons">edit</i>
+                a.list-time__delete.list-time__icon.tooltipped.secondary-content(href=`#!` data-id=`${el.id}` data-tooltip="Удалить") <i class="material-icons">delete</i>
+        else
+          .row
+            span.list__empty.col.s12.center-align Тут пока ничего нет :(
+  include modules/scripts
+  script(src="./js/add.js")
+  script(src="./js/delete.js")
+  script(src="./js/edit.js")

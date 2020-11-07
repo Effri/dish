@@ -1,0 +1,19 @@
+include modules/head
+body
+  include modules/nav
+   include modules/preload
+  main.view
+    .row.center-align
+      h1.view__logo.center-align #{name || "Не известно"}
+    .row.view__row.center-align
+      .col.s10.m4.offset-s1.offset-m1
+        a(href=`${link || "#"}`) Рецепт
+        .link
+          span#textLink #{link || "_Не установлен_"} 
+      .col.s10.m4.offset-s1.offset-m1 Тип блюда: #{dishType || "_Не установлен_"}
+    .row.view__row.center-align
+      .col.s12 Тип трапезы: #{type || "_Не установлен_"}
+    .row.view__row.center-align
+      .col.s12 Описание
+        p #{description || "_Не установлено_"}
+  include modules/scripts

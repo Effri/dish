@@ -1,0 +1,10 @@
+nav.purple.darken-1
+    .nav-wrapper
+      a(href="/").nav__logo.brand-logo.right DISHGEN
+      a.sidenav-trigger(href='#', data-target='slide-out') <i class="material-icons">menu</i>
+      ul#nav-mobile.hide-on-med-and-down
+        li.tooltipped(data-tooltip="Вернуться на главную"): a(href="/") <i class="material-icons">arrow_back</i>
+        li#refresh.tooltipped(data-tooltip="Перезагрузить"): a(href="#") <i class="material-icons">refresh</i>
+ul#slide-out.sidenav
+    li.tooltipped(data-tooltip="Вернуться на главную"): a(href="/") Вернуться на главную <i class="material-icons">arrow_back</i>
+    li.refresh.tooltipped(data-tooltip="Перезагрузить"): a(href="#") Перезагрузить <i class="material-icons">refresh</i>

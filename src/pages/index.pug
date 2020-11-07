@@ -1,0 +1,81 @@
+include modules/head
+body
+  include modules/preload
+  nav.purple.darken-1
+    .nav-wrapper
+      a(href="/").nav__logo.brand-logo.right DISHGEN
+      a.sidenav-trigger(href='#', data-target='slide-out') <i class="material-icons">menu</i>
+      ul#nav-mobile.hide-on-med-and-down
+        li.tooltipped(data-tooltip="Редактировать блюда"): a(href="/edit") <i class="material-icons">create</i>
+        li.refresh.tooltipped(data-tooltip="Перезагрузить"): a(href="#") <i class="material-icons">refresh</i>
+        li.tooltipped(data-tooltip="Дополнительно")
+          a(href="#") <i class="material-icons dropdown-trigger" data-target='settings'>more_vert</i>
+          ul#settings.dropdown-content
+            li: a(href="/export") <i class="material-icons">import_export</i> Экспорт блюд
+            li.divider(tabindex="-1")
+            li: a(href="/edit") <i class="material-icons">create</i> Редактировать блюда
+            li: a(href="/more") <i class="material-icons">book</i> Подробнее
+  ul#slide-out.sidenav
+    li.tooltipped(data-tooltip="Редактировать блюда"): a(href="/edit") Редактировать блюда <i class="material-icons">create</i>
+    li.refresh.tooltipped(data-tooltip="Перезагрузить"): a(href="#") Перезагрузить <i class="material-icons">refresh</i>
+    li.tooltipped(data-tooltip="Дополнительно")
+      a(href="#"  class="dropdown-trigger" data-target='settings2') Дополнительно <i class="material-icons">more_vert</i>
+      ul#settings2.dropdown-content
+        li: a(href="/export") <i class="material-icons">import_export</i> Экспорт блюд
+        li.divider(tabindex="-1")
+        li: a(href="/edit") <i class="material-icons">create</i> Редактировать блюда
+        li: a(href="/more") <i class="material-icons">book</i> Подробнее
+  main.main
+    .row
+      .selection.col.s10.l5.offset-s1.offset-l1
+        .input-field
+        select#generate__select.purple.darken-1(multiple)
+          option(value="" disabled selected) Выберите тип трапезы
+          each el, i in lunchTypes
+            option(value=`${i}`) #{el}
+      .dish__switch.switches.col.s10.l4.offset-s1.offset-l1
+        .switch.left-align
+            p
+              label
+                input(data-id="0" type="checkbox" checked)
+                span Продвинутая система выбора
+            p
+              label
+                input(data-id="1" type="checkbox")
+                span Только блюда с полным описанием
+            p
+              label
+                input(data-id="2" type="checkbox")
+                span Только десерты
+            p
+              label
+                input(data-id="3" type="checkbox")
+                span Только первые блюда
+            p
+              label
+                input(data-id="4" type="checkbox")
+                span Только вторые блюда
+    .row
+      .main__slider.col.s10.m8.offset-s1.offset-m1
+        h2.slider__logo Выберите степень учета блюда в продвинутом выборе
+        p.range-field
+          input(type="range" id="test5" value="30" min="0" max="120")
+    .row
+      .submit.col.s10.m8.offset-s1.offset-m1
+          button#generate.purple.darken-1.btn.waves-effect.waves-light Сгенерировать блюдо <i class="material-icons right">send</i>
+  section.last-time
+    .row
+      h2.last-time__logo.center-align.col.s12 В прошлый раз вы готовили:
+    .row
+      ul.last-time__list.collection.with-header.col.s10.offset-s1
+        li.collection-header <h4>Предыдущие блюда</h4>
+        if lastDishes[0]
+          each el, i in lastDishes
+            li.collection-item
+              div #{el.name}
+                a.tooltipped.secondary-content(href=`/view?id=${el.id}&last=true` data-tooltip="Узнать подробнее") <i class="material-icons">send</i>
+        else
+          .row
+            span.list__empty.col.s12.center-align Тут пока ничего нет :(
+  include modules/scripts
+  script(src="./js/generate.js")

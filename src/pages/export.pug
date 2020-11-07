@@ -1,0 +1,12 @@
+include modules/head
+body
+  include modules/nav
+  include modules/preload
+  main.export
+    h1.export__logo.center-align Экспрот блюд
+    .row.export__row
+      .input-field.file-field
+        #export.waves-effect.waves-light.btn.col.s8.offset-s2 Экспорт блюд
+  a#download(hidden download href="") file
+  include modules/scripts
+  script(src="./js/download.js")
