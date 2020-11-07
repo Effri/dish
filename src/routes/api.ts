@@ -2,7 +2,7 @@ import { Router } from "express";
 import { DB } from "../models/DB";
 import { IDish, IParams } from "../types/interfaces";
 import { v4 as uuidv4 } from "uuid";
-// const getIp = require("ipware")().get_ip;
+const getIp = require("ipware")().get_ip;
 const router = Router();
 
 router.delete("/delete", (req, res) => {
@@ -25,7 +25,7 @@ router.post("/add", (req, res) => {
 	const userAgent = req.headers["user-agent"];
 
 	dish.id = uuidv4();
-	dish.ipAdress = ""; // getIp(req).clientIp ||
+	dish.ipAdress = getIp(req).clientIp || "";
 	dish.date = Date.now();
 	dish.weight = 200;
 	dish.userAgent = userAgent;
