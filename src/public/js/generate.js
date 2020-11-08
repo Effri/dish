@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 			return;
 		}
-
 		startLoad();
 		let generated = await axios.post("/api/generate", { slider, switches, selected }).then(
 			(res) => {
@@ -44,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				html: "Увы, но по вашим запросам мы не нашли не одного блюда",
 				displayLength: 2000,
 			});
+			endLoad();
 			return;
 		}
 		generated = generated.data;
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		rowResults.classList = "row results";
 		rowResults.innerHTML = `
     <div class="col s10 offset-s1">
-     <h2>Ваше блюдо ${generated.name}!</h2>
+     <h2>Ваше блюдо - ${generated.name}!</h2>
      <p>
        Посмотрите о нем
        <a class="tooltipped" href="/view?id=${generated.id}" data-tooltip="Узнать подробнее"> подробнее <i class="material-icons">send</i></a>

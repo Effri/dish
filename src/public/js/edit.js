@@ -11,9 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			link = document.getElementById("edit_link"),
 			dishType = document.getElementById("edit_dishType"),
 			type = document.getElementById("edit__type"),
-			descr = document.getElementById("edit_area"),
+			descr = document.getElementById("edit__area"),
+			productType = document.getElementById("edit__product"),
 			edit = document.querySelector(".edit"),
 			editLogo = document.querySelector(".edit__logo");
+
 		startLoad();
 		axios.get(`api/get/id?id=${id}`).then(
 			(res) => {
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					dishType.value = dish.dishType;
 					type.value = dish.type;
 					descr.value = dish.description;
+					productType.value = dish.productType;
 
 					edit.setAttribute("data-edit", id);
 					editLogo.textContent = `Изменение блюда ${dish.name}!`;

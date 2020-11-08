@@ -94,29 +94,55 @@ export class DB {
 			}
 		});
 
-		const dishTypes = ["2", "3", "4"]; // Id's for switchers
+		const dishTypes = ["2", "3", "4", "5"]; // Id's for switchers
 		const switchesEncode: any = {
 			"0": "advanced",
 			"2": "десерт",
 			"3": "перв",
 			"4": "втор",
+			"5": "салат",
 		};
-		if (!arrIncludes(params.switches.join(""), ["2", "3", "4"], true)) {
-			params.switches = [...params.switches, "2", "3", "4"];
+
+		const productTypes = ["6", "7"];
+		const productTypesEncode: any = {
+			"6": "фарш",
+			"7": "куриц",
+		};
+
+		console.log(params.switches);
+		console.log(arrIncludes(params.switches.join(""), dishTypes));
+		if (!arrIncludes(params.switches.join(""), dishTypes)) {
+			params.switches = [...params.switches, ...dishTypes];
 		}
 		// Switchres
 		params.switches.forEach((a) => {
-			const query = arrIncludes(a.toLowerCase(), dishTypes) as string;
-			if (query) {
-				dishes2.push(
-					...DataBase.dishes.filter((a) =>
-						a.dishType?.trim()
-							? a.dishType.toLocaleLowerCase().includes(switchesEncode[query] || "")
-							: true
-					)
-				);
-			}
+			const query = arrIncludes(a.toLowerCase(), [...dishTypes]) as string;
+			if (!query) return;
+
+			dishes2.push(
+				...DataBase.dishes.filter((a) => {
+					let res = false;
+					if (a.dishType?.trim())
+						res = a.dishType.toLocaleLowerCase().includes(switchesEncode[query] || "");
+					else res = true;
+					return res;
+				})
+			);
 		});
+
+		params.switches.forEach((a) => {
+			const query = arrIncludes(a.toLowerCase(), [...productTypes]) as string;
+			if (!query) return;
+
+			dishes2 = dishes2.filter((el) => {
+				let res = false;
+				if (el.productType?.trim())
+					res = el.productType.toLocaleLowerCase().includes(productTypesEncode[query] || "");
+				else res = true;
+				return res;
+			});
+		});
+
 		if (params.switches.includes("1")) {
 			dishes2 = dishes2.filter((a) => a.name && a.link && a.dishType && a.type && a.description);
 		}
@@ -132,8 +158,8 @@ export class DB {
 			if (dishes1.some((a) => a === item) && dishes2.some((a) => a === item))
 				resultDishes.push(item);
 		}
-
-		const generated = this.randomDish(params.switches.includes("0"), resultDishes);
+		console.log([...new Set(resultDishes)]);
+		const generated = this.randomDish(params.switches.includes("0"), [...new Set(resultDishes)]);
 
 		return generated;
 	}

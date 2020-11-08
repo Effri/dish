@@ -14,6 +14,7 @@ export interface IDish {
 	description?: string;
 	ipAdress?: string;
 	userAgent?: string;
+	productType?: string;
 }
 
 export interface IParams {

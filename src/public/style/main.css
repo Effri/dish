@@ -184,9 +184,19 @@ textarea:focus ~ label {
 		width: 100px;
 	}
 }
-@media screen and (max-width: 405px) {
+@media screen and (max-width: 379px) {
 	.list__title {
-		width: 60px;
+		width: 80px;
+	}
+}
+@media screen and (max-width: 352px) {
+	.list__title {
+		width: 70px;
+	}
+}
+@media screen and (max-width: 338px) {
+	.list__title {
+		width: 50px;
 	}
 }
 #restart {

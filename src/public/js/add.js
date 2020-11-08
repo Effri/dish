@@ -13,8 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		const link = document.getElementById("edit_link");
 		const dishType = document.getElementById("edit_dishType");
 		const type = document.getElementById("edit__type");
-		const descr = document.getElementById("edit_area");
+		const descr = document.getElementById("edit__area");
 		const edit = document.querySelector(".edit");
+		const productType = document.getElementById("edit__product");
 
 		let dish = {
 			name: name.value,
@@ -22,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			dishType: dishType.value || null,
 			type: type.value || null,
 			description: descr.value || null,
+			productType: productType.value || null,
 		};
 
 		subbtn.setAttribute("disabled", "true");

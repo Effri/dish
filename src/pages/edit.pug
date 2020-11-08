@@ -18,7 +18,7 @@ body
           label(for="edit_link") Рецепт
       .col.s10.m5.offset-s1
         .input-field
-          input#edit_dishType.validate(placeholder="Второе, Первое, Десерт" type="text")
+          input#edit_dishType.validate(placeholder="Второе, Первое, Десерт, Салат" type="text")
           label(for="edit_dishType") Тип блюда   
     .row
       .col.s10.offset-s1
@@ -28,8 +28,13 @@ body
     .row
       .col.s10.offset-s1
         .input-field
-          textarea#edit_area.materialize-textarea(placeholder="Введите описание блюда")
-          label(for="edit_area") Описание
+          input#edit__product.validate(placeholder="Фарш, курица" type="text")
+          label(for="edit__product") Тип продукта  (чезер запятую если несколько)
+    .row
+      .col.s10.offset-s1
+        .input-field
+          textarea#edit__area.materialize-textarea(placeholder="Введите описание блюда")
+          label(for="edit__area") Описание
     .row
       .col.s10.offset-s1
         button.edit__submit.purple.darken-1.btn.waves-effect.waves-light Создать блюдо <i class="material-icons right">send</i>
