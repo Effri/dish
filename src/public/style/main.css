@@ -166,37 +166,44 @@ textarea:focus ~ label {
 	.view {
 		font-size: 23px;
 	}
+	.results h2 {
+		font-size: 2rem;
+	}
 	#textLink {
-		width: 150px;
+		width: 90%;
 	}
-	.list__title {
-		width: 140px;
+	.view .view__logo {
+		font-size: 1.8rem;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	.dishTypeView {
+		margin-top: 2rem;
 	}
 }
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
 	.list__title {
-		width: 120px;
+		width: 200px;
 	}
 }
-@media screen and (max-width: 405px) {
+@media screen and (max-width: 425px) {
 	.list__title {
-		width: 100px;
+		width: 160px;
 	}
 }
 @media screen and (max-width: 379px) {
 	.list__title {
-		width: 80px;
+		width: 140px;
 	}
 }
 @media screen and (max-width: 352px) {
 	.list__title {
-		width: 70px;
+		width: 100px;
 	}
 }
 @media screen and (max-width: 338px) {
 	.list__title {
-		width: 50px;
+		width: 70px;
 	}
 }
 #restart {
