@@ -6,6 +6,8 @@ import { exportRouter } from "../routes/export";
 import { moreRouter } from "../routes/more";
 import { apiRouter } from "../routes/api";
 import { viewRouter } from "../routes/view";
+import { searchRouter } from "../routes/search";
+
 import bodyParser from "body-parser";
 
 const app = express();
@@ -22,6 +24,7 @@ app.use("/edit", editRouter);
 app.use("/export", exportRouter);
 app.use("/more", moreRouter);
 app.use("/view", viewRouter);
+app.use("/search", searchRouter);
 
 app.use("/api", apiRouter);
 

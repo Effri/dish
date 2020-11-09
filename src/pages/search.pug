@@ -1,0 +1,34 @@
+include modules/head
+body
+  include modules/nav
+  include modules/preload
+  main.search
+    .row.center-align
+      .col.m10.s12.offset-m1
+        h1 Поиск блюд в списке:
+    .row
+      .col.m10.s12.offset-m1
+        .input-field
+          i.material-icons.prefix search
+          label(for="search__field") Введите поисковой запрос
+          input.validate#search__field(type="text")
+  section.dish__cards
+    .row.center-align
+      .col.m10.s12.offset-m1
+        h1 Результаты поиска:
+    each el in all
+      .row
+        .col.s12.m6.offset-m3
+          .card.purple.darken-4
+            .card-content.white-text
+              span.card-title #{el.name}
+              if el.type
+                p Тип трапезы: #{el.type}
+              if el.dishType
+                p Тип блюда: #{el.dishType}
+              if el.description
+                p #{el.description}
+            .card-action
+              a(href=`/view?id=${el.id}`) Подробнее
+
+  include modules/scripts

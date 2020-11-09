@@ -80,6 +80,9 @@ textarea:focus ~ label {
 .view__row {
 	margin-top: 3rem;
 }
+.view__description p {
+	white-space: pre-wrap;
+}
 
 .progress {
 	position: absolute;
@@ -159,14 +162,21 @@ textarea:focus ~ label {
 	text-overflow: ellipsis;
 }
 
+.dish__cards .card-content p {
+	margin: 10px 0 0;
+	white-space: pre-wrap;
+}
+
 @media screen and (max-width: 900px) {
 	h1.edit__logo {
-		font-size: 1.9rem;
+		font-size: 2rem;
 	}
 	.view {
 		font-size: 23px;
 	}
-	.results h2 {
+	.results h2,
+	.search h1,
+	.dish__cards h1 {
 		font-size: 2rem;
 	}
 	#textLink {
