@@ -11,13 +11,13 @@ body
         .input-field
           i.material-icons.prefix search
           label(for="search__field") Введите поисковой запрос
-          input.validate#search__field(type="text")
+          input.validate#search__field(type="text" spellcheck="false")
   section.dish__cards
     .row.center-align
       .col.m10.s12.offset-m1
         h1 Результаты поиска:
     each el in all
-      .row
+      .row.dish__cards-item
         .col.s12.m6.offset-m3
           .card.purple.darken-4
             .card-content.white-text
@@ -28,7 +28,8 @@ body
                 p Тип блюда: #{el.dishType}
               if el.description
                 p #{el.description}
+              p.dish__cards-content(hidden) #{el.description} #{el.dishType} #{el.type} #{el.productType} #{el.name}
             .card-action
               a(href=`/view?id=${el.id}`) Подробнее
-
   include modules/scripts
+  script(src="./js/search.js")

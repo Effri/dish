@@ -39,7 +39,12 @@ body
       .col.s10.offset-s1
         button.edit__submit.purple.darken-1.btn.waves-effect.waves-light Создать блюдо <i class="material-icons right">send</i>
   section.list
-    h1.list__logo.center-align
+    .row
+      .col.m10.s12.offset-m1
+        .input-field
+          i.material-icons.prefix search
+          label(for="edit__field") Введите поисковой запрос
+          input.validate#edit__field(type="text" spellcheck="false")
     .row
       ul.last-time__list.list-time__collection.collection.with-header.col.m10.s12.offset-m1
         li.collection-header <h4>Список всех блюд:</h4>
@@ -47,6 +52,7 @@ body
           each el, i in dishes
             li.collection-item
               div.collection-item__insert <span class="list__title">#{el.name}</span>
+                p.list-time__info(hidden) #{el.description} #{el.dishType} #{el.type} #{el.productType} #{el.name}
                 a.list-time__icon.tooltipped.secondary-content(href=`/view?id=${el.id}` data-tooltip="Узнать подробнее") <i class="material-icons">send</i>
                 a.list-time__edit.list-time__icon.tooltipped.secondary-content(href=`#!` data-id=`${el.id}` data-tooltip="Редактировать") <i class="material-icons">edit</i>
                 a.list-time__delete.list-time__icon.tooltipped.secondary-content(href=`#!` data-id=`${el.id}` data-tooltip="Удалить") <i class="material-icons">delete</i>

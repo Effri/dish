@@ -49,3 +49,17 @@ document.addEventListener("DOMContentLoaded", function () {
 		);
 	});
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+	document.getElementById("edit__field")?.addEventListener("input", (event) => {
+		const query = event.target.value.toLowerCase().trim();
+		const dishes = document.querySelectorAll(".last-time__list .collection-item");
+		dishes.forEach((card) => {
+			if (
+				card.querySelector(".list-time__info")?.textContent.toLowerCase().trim().includes(query)
+			) {
+				card.style.display = "block";
+			} else card.style.display = "none";
+		});
+	});
+});
